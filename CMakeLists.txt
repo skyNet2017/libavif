@@ -82,7 +82,8 @@ if(AVIF_LOCAL_ZLIBPNG)
 
     set(ZLIB_LIBRARY zlibstatic)
 endif()
-option(AVIF_LOCAL_JPEG "Build jpeg by providing your own copy inside the ext subdir." OFF)
+option(AVIF_LOCAL_JPEG "Build jpeg by providing your own copy inside the ext subdir." ON)
+message(STATUS "libavif: AVIF_LOCAL_JPEG :${AVIF_LOCAL_JPEG}.")
 if(AVIF_LOCAL_JPEG)
     add_subdirectory(ext/libjpeg)
     if("${CMAKE_SOURCE_DIR}" STREQUAL  "${CMAKE_CURRENT_SOURCE_DIR}")
@@ -425,7 +426,9 @@ if(BUILD_SHARED_LIBS)
     endif()
 endif()
 
-option(AVIF_BUILD_EXAMPLES "Build avif Examples." OFF)
+option(AVIF_BUILD_EXAMPLES "Build avif Examples." ON)
+
+message(STATUS "libavif: AVIF_BUILD_EXAMPLES :${AVIF_BUILD_EXAMPLES}.")
 if(AVIF_BUILD_EXAMPLES)
     set(AVIF_EXAMPLES
         avif_example_decode_memory
@@ -452,6 +455,8 @@ if(NOT SKIP_INSTALL_ALL)
 endif()
 
 option(AVIF_BUILD_APPS "Build avif apps." OFF)
+
+message(STATUS "libavif: AVIF_BUILD_APPS :${AVIF_BUILD_APPS}.")
 if(AVIF_BUILD_APPS)
     find_package(ZLIB REQUIRED)
     find_package(PNG REQUIRED)
@@ -506,6 +511,8 @@ if(AVIF_BUILD_APPS)
 endif()
 
 option(AVIF_BUILD_TESTS "Build avif tests." OFF)
+
+message(STATUS "libavif: AVIF_BUILD_TESTS :${AVIF_BUILD_TESTS}.")
 if(AVIF_BUILD_TESTS)
     add_executable(aviftest
         apps/shared/y4m.c
