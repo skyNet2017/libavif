@@ -12,3 +12,9 @@
 .clangd/
 cscope.*
 tags
+cmake-build-debug
+.vs
+/ext/aom/
+
+.idea
+
